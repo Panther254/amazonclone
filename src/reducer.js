@@ -1,5 +1,6 @@
 export const initialState = {
 	basket: [],
+	user: '',
 };
 
 export const getBasketTotal = (basket) =>(
@@ -13,6 +14,28 @@ const reducer = (state, action) => {
 				...state,
 				basket: [...state.basket, action.item],
 			};
+
+		case 'REMOVE_FROM_BASKET':
+			const index = state.basket.findIndex((basketItem)=>(basketItem.id === action.id));
+
+			let newBasket = [...state.basket];
+
+			if (index >= 0) {
+				newBasket.splice(index,1);
+			} else {
+				alert(`Can't remove product id ${action.id}.It does not exist in the basket`);
+			}
+			return {
+				...state,
+				basket: newBasket,
+			};
+
+		case 'SET_USER':
+			return {
+				...state,
+				user: action.user,
+			};
+			
 		default:
 			return state;
 	}
