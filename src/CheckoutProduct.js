@@ -8,7 +8,7 @@ const CheckoutProduct = forwardRef((props, ref) => {
 	
 	const [{ basket }, dispatch ] = useStateValue();
 
-	const removeFromBasket = () => {dispatch({type: 'REMOVE_FROM_BASKET',id: props.key,})};
+	const removeFromBasket = () => {dispatch({type: 'REMOVE_FROM_BASKET',id: props.id,})};
 	
 	return (
 		<div className="checkoutProduct" ref={ref}>
@@ -24,7 +24,9 @@ const CheckoutProduct = forwardRef((props, ref) => {
 				<p className="checkoutProduct__rating">
 					{Array(props.rating).fill().map((_,i)=>(<p>⭐</p>))}
 				</p>
-				<button onClick={removeFromBasket}>Remove From Basket</button>
+
+				{!props.hideButton && (<button onClick={removeFromBasket}>Remove From Basket</button>)}
+				
 			</div>
 		</div>
 	)

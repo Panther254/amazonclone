@@ -41,6 +41,11 @@
 	color: white;
 }
 
+.header__nav > a {
+	text-decoration: none;
+	color: white;
+}
+
 .header__option{
 	display: flex;
 	flex-direction: column;
